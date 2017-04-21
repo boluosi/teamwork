@@ -6,108 +6,202 @@
     <meta name="author" content="uZoneTec">
     <title>HIT RCMS</title>
     <style scoped>
-        .layout{
-        border: 1px solid #d7dde4;
-        background: #f5f7f9;
-        position: relative;
-    }
-    .layout-breadcrumb{
-        padding: 10px 15px 0;
-    }
-    .layout-content{
-        min-height: 200px;
-        margin: 15px;
-        overflow: hidden;
-        background: #fff;
-        border-radius: 4px;
-    }
-    .layout-content-main{
-        padding: 10px;
-    }
-    .layout-copy{
-        text-align: center;
-        padding: 10px 0 20px;
-        color: #9ea7b4;
-    }
-    .layout-menu-left{
-        background: #464c5b;
-    }
-    .layout-header{
-        height: 60px;
-        background: #fff;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    }
-    .layout-logo-left{
-        width: 90%;
-        height: 30px;
-        background: #5b6270;
-        border-radius: 3px;
-        margin: 15px auto;
-    }
+        .layout {
+            border: 1px solid #3399ff;
+            background: #3399ff;
+            width: 100%;
+            height: 70px;
+            text-align: center;
+        }
+
+        .layout-ceiling-main {
+            float: right;
+            margin-right: 10px;
+            padding: 20px 0;
+        }
+
+        .font {
+            font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        }
+
+        .menu-font {
+            font-size: 30px;
+            color: #464c5b;
+            padding: 10px 28px;
+        }
+
+        .menu-height {
+            height: 100px;
+            line-height: 74px;
+            border: solid 1px #DDDDDD;
+            border-radius: 5px;
+        }
+
+            .menu-height:hover {
+                border: 2px solid #DDDDDD;
+            }
+
+        .gundong {
+            line-height: 40px;
+        }
+
+        .top {
+            background: #DDDDDD;
+            border: solid 1px #DDDDDD;
+            border-radius: 5px;
+        }
+        /*闪烁*/
+        .wrong {
+            height: 100px;
+            line-height: 74px;
+            border: solid 1px #DDDDDD;
+            background: #fb1252;
+            border-radius: 5px;
+            -webkit-animation: twinkling 1s infinite ease-in-out;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes twinkling {
+            0% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes twinkling {
+            0% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
-    <link rel="stylesheet" href="/content/iview.css">
-    <script type="text/javascript" src="/scripts/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/content/iview.css" />
+    <link rel="stylesheet" type="text/css" href="/content/ionicons.css" />
+    <script type="text/javascript" src="/scripts/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="/scripts/vue.min.js"></script>
-    <script type="text/javascript" src="/scripts/echarts.min.js"></script>
+    <script type="text/javascript" src="/scripts/uzen.js"></script>
     <script type="text/javascript" src="/scripts/iview.js"></script>
 </head>
 <body>
     <div id="app">
-        <div class="layout">
-            <Row type="flex">
-                <i-col span="5" class="layout-menu-left">
-                    <Menu active-name="1-2" theme="dark" width="auto" open-names="['1']">
-                        <div class="layout-logo-left"></div>
-                        <Submenu name="1">
-                            <template slot="title">
-                                <Icon type="ios-navigate"></Icon>
-                                导航一
-                            </template>
-                            <Menu-item name="1-1">选项 1</Menu-item>
-                            <Menu-item name="1-2">选项 2</Menu-item>
-                            <Menu-item name="1-3">选项 3</Menu-item>
-                        </Submenu>
-                        <Submenu name="2">
-                            <template slot="title">
-                                <Icon type="ios-keypad"></Icon>
-                                导航二
-                            </template>
-                            <Menu-item name="2-1">选项 1</Menu-item>
-                            <Menu-item name="2-2">选项 2</Menu-item>
-                        </Submenu>
-                        <Submenu name="3">
-                            <template slot="title">
-                                <Icon type="ios-analytics"></Icon>
-                                导航三
-                            </template>
-                            <Menu-item name="3-1">选项 1</Menu-item>
-                            <Menu-item name="3-2">选项 2</Menu-item>
-                        </Submenu>
-                    </Menu>
-                </i-col>
-                <i-col span="19">
-                    <div class="layout-header"></div>
-                    <div class="layout-breadcrumb">
-                        <Breadcrumb>
-                            <Breadcrumb-item href="#">首页</Breadcrumb-item>
-                            <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
-                            <Breadcrumb-item>某应用</Breadcrumb-item>
-                        </Breadcrumb>
+        <Row>
+            <i-col span="24">
+                <div class="layout">
+                    <span style="font-size:40px;color:#464c5b">智能楼宇水表监测系统</span>
+                    <div class="layout-ceiling-main">
+                        <a href="#" style="font-size:14px;color:#464c5b">帮助中心</a> |
+                        <a href="#" style="font-size:14px;color:#464c5b">联系我们</a>
                     </div>
-                    <div class="layout-content">
-                        <div class="layout-content-main">内容区域</div>
-                    </div>
-                    <div class="layout-copy">
-                        2011-2016 &copy; TalkingData
-                    </div>
-                </i-col>
-            </Row>
-        </div>
+
+                </div>
+            </i-col>
+        </Row>
+        <Row gutter="2">
+            <i-col span="3">
+                <i-menu theme="light" active-name="1" width="auto">
+                    <Menu-item name="1" class="menu-height">
+                        <Icon type="ios-list-outline" style="font-size:30px"></Icon>
+                        <span class="menu-font">总&nbsp&nbsp&nbsp览</span>
+                    </Menu-item>
+                    <Menu-item name="2" class="wrong">
+                        <Icon type="ios-bell" style="font-size:30px"></Icon>
+                        <span class="menu-font">报&nbsp&nbsp&nbsp警</span>
+                    </Menu-item>
+                    <Menu-item name="3" class="menu-height">
+                        <Icon type="ios-search-strong" style="font-size:30px"></Icon>
+                        <span class="menu-font">明&nbsp&nbsp&nbsp细</span>
+                    </Menu-item>
+                    <Menu-item name="4" class="menu-height">
+                        <Icon type="clipboard" style="font-size:30px"></Icon>
+                        <span class="menu-font">报&nbsp&nbsp&nbsp表</span>
+                    </Menu-item>
+                    <Menu-item name="5" class="menu-height">
+                        <Icon type="pie-graph" style="font-size:30px"></Icon>
+                        <span class="menu-font">分&nbsp&nbsp&nbsp析</span>
+                    </Menu-item>
+                    <Menu-item name="6" class="menu-height">
+                        <Icon type="ios-gear" style="font-size:30px"></Icon>
+                        <span class="menu-font">配&nbsp&nbsp&nbsp置</span>
+                    </Menu-item>
+                </i-menu>
+            </i-col>
+            <i-col span="21">
+                <div class="top">
+                    <MARQUEE id=a onmouseover=a.stop()
+                             onmouseout=a.start() scrollAmount=6 direction=left
+                             height=40>
+                        <div class="gundong"><span style="font-size:18px;color:#00cc66">系统运行一切正常。。。</span></div>
+                    </MARQUEE>
+                </div>
+                <div>
+                    <i-form label-width="70" inline>
+                        <Form-item label="起止时间">
+                            <Row>
+                                <i-col span="11">
+                                    <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+                                </i-col>
+                                <i-col span="2" style="text-align: center">&nbsp&nbsp&nbsp-</i-col>
+                                <i-col span="11">
+                                    <Time-picker type="timerange" placement="bottom-end" placeholder="选择时间" style="width: 200px"></Time-picker>
+                                </i-col>
+                            </Row>
+                        </Form-item>    
+                        <Form-item label="时间节点">
+                            <i-select style="width:200px">
+                                <i-option value="1">年份</i-option>
+                                <i-option value="2">半年</i-option>
+                                <i-option value="3">季度</i-option>
+                                <i-option value="4">月份</i-option>
+                                <i-option value="5">每天</i-option>
+                                <i-option value="6">ALL</i-option>
+                            </i-select>
+                        </Form-item>
+                        <Form-item label="输入框">
+                            <i-input placeholder="请输入"></i-input>
+                        </Form-item>
+                        <Form-item label="输入框">
+                            <i-input placeholder="请输入"></i-input>
+                        </Form-item>
+                        <Form-item label="输入框">
+                            <i-input placeholder="请输入"></i-input>
+                        </Form-item>
+                        <Form-item label="输入框">
+                            <i-input placeholder="请输入"></i-input>
+                        </Form-item>
+                        <Form-item label="输入框">
+                            <i-input placeholder="请输入"></i-input>
+                        </Form-item>
+                        <Form-item label="输入框">
+                            <i-input placeholder="请输入"></i-input>
+                        </Form-item>
+                    </i-form>
+                </div>
+            </i-col>
+        </Row>
+
     </div>
-   <script>
-       var vue = new Vue({
-           el:'#app'
-       })
-   </script>
+    <script>
+        app();
+        function app() {
+            var vue = new Vue({
+                el: '#app',
+                methods: {
+
+                }
+            })
+        }
+    </script>
 </body>
 </html>

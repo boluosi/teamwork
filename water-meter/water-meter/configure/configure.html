@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<<head>
+    <meta charset="utf-8">
+    <title>纯css3闪烁动画</title>
+    <style>
+        /*  动画闪烁颜色  */
+  
+
+        @-webkit-keyframes magentaPulse {
+            from {
+                background-color: #630030;
+                -webkit-box-shadow: 0 0 9px #333;
+            }
+
+            50% {
+                background-color: #a9014b;
+                -webkit-box-shadow: 0 0 18px #a9014b;
+            }
+
+            to {
+                background-color: #630030;
+                -webkit-box-shadow: 0 0 9px #333;
+            }
+        }
+
+        /*  重复动画  */
+        a.button {
+            -webkit-animation-iteration-count: infinite;
+        }
+
+        /*  动画名称、动画完成时间  */
+     
+
+  
+        .magentaPulse.button {
+            -webkit-animation-name: magentaPulse;
+            -webkit-animation-duration: 3s;
+        }
+    </style>
+</head>
+<body style="background-color:#ccc;">
+    <div >
+        <div >
+            
+            <a class="barge magentaPulse button">click me</a>
+        </div>
+    </div>
+</body>
+</html>
