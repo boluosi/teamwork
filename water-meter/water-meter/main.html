@@ -96,7 +96,7 @@
 </head>
 <body>
     <div id="app">
-        <Row>
+        <row>
             <i-col span="24">
                 <div class="layout">
                     <span style="font-size:40px;color:#464c5b">智能楼宇水表监测系统</span>
@@ -107,8 +107,8 @@
 
                 </div>
             </i-col>
-        </Row>
-        <Row gutter="2">
+        </row>
+        <row gutter="2">
             <i-col span="3">
                 <i-menu theme="light" active-name="1" width="auto">
                     <Menu-item name="1" class="menu-height">
@@ -138,70 +138,172 @@
                 </i-menu>
             </i-col>
             <i-col span="21">
-                <div class="top">
-                    <MARQUEE id=a onmouseover=a.stop()
-                             onmouseout=a.start() scrollAmount=6 direction=left
-                             height=40>
-                        <div class="gundong"><span style="font-size:18px;color:#00cc66">系统运行一切正常。。。</span></div>
-                    </MARQUEE>
-                </div>
-                <div>
-                    <i-form label-width="70" inline>
-                        <Form-item label="起止时间">
-                            <Row>
-                                <i-col span="11">
-                                    <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
-                                </i-col>
-                                <i-col span="2" style="text-align: center">&nbsp&nbsp&nbsp-</i-col>
-                                <i-col span="11">
-                                    <Time-picker type="timerange" placement="bottom-end" placeholder="选择时间" style="width: 200px"></Time-picker>
-                                </i-col>
-                            </Row>
-                        </Form-item>    
-                        <Form-item label="时间节点">
-                            <i-select style="width:200px">
-                                <i-option value="1">年份</i-option>
-                                <i-option value="2">半年</i-option>
-                                <i-option value="3">季度</i-option>
-                                <i-option value="4">月份</i-option>
-                                <i-option value="5">每天</i-option>
-                                <i-option value="6">ALL</i-option>
-                            </i-select>
-                        </Form-item>
-                        <Form-item label="输入框">
-                            <i-input placeholder="请输入"></i-input>
-                        </Form-item>
-                        <Form-item label="输入框">
-                            <i-input placeholder="请输入"></i-input>
-                        </Form-item>
-                        <Form-item label="输入框">
-                            <i-input placeholder="请输入"></i-input>
-                        </Form-item>
-                        <Form-item label="输入框">
-                            <i-input placeholder="请输入"></i-input>
-                        </Form-item>
-                        <Form-item label="输入框">
-                            <i-input placeholder="请输入"></i-input>
-                        </Form-item>
-                        <Form-item label="输入框">
-                            <i-input placeholder="请输入"></i-input>
-                        </Form-item>
-                    </i-form>
-                </div>
+                <row>
+                    <i-col span="24">
+                        <div class="top">
+                            <MARQUEE id=a onmouseover=a.stop()
+                                     onmouseout=a.start() scrollAmount=6 direction=left
+                                     height=40>
+                                <div class="gundong"><span style="font-size:18px;color:#00cc66">系统运行一切正常。。。</span></div>
+                            </MARQUEE>
+                        </div>
+                    </i-col>
+                </row>
+                </br>
+                <row>
+                    <i-col span="24">
+                        <div>
+                            <i-form label-width="70" inline>
+                                <Form-item label="起止时间">
+                                    <row>
+                                        <i-col span="11">
+                                            <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+                                        </i-col>
+                                        <i-col span="2" style="text-align: center">&nbsp&nbsp&nbsp-</i-col>
+                                        <i-col span="11">
+                                            <Time-picker type="timerange" placement="bottom-end" placeholder="选择时间" style="width: 200px"></Time-picker>
+                                        </i-col>
+                                    </row>
+                                </Form-item>
+                                <Form-item label="时间节点">
+                                    <i-select style="width:80px">
+                                        <i-option value="1">年份</i-option>
+                                        <i-option value="2">半年</i-option>
+                                        <i-option value="3">季度</i-option>
+                                        <i-option value="4">月份</i-option>
+                                        <i-option value="5">每天</i-option>
+                                        <i-option value="6">ALL</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item label="分组">
+                                    <i-select v-model="model1" style="width:200px" filterable multiple>
+                                        <i-option value="1">楼一</i-option>
+                                        <i-option value="2">楼二</i-option>
+                                        <i-option value="3">组一</i-option>
+                                        <i-option value="4">组二</i-option>
+                                        <i-option value="5">楼一</i-option>
+                                        <i-option value="6">楼二</i-option>
+                                        <i-option value="7">组一</i-option>
+                                        <i-option value="8">组二</i-option>
+                                        <i-option value="9">楼一</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item label="楼层">
+                                    <i-select v-model="model2" style="width:200px" filterable multiple>
+                                        <i-option value="1">一楼</i-option>
+                                        <i-option value="2">二楼</i-option>
+                                        <i-option value="3">三楼</i-option>
+                                        <i-option value="4">四楼</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item label="房间">
+                                    <i-select v-model="model3" style="width:200px" filterable multiple>
+                                        <i-option value="1">101</i-option>
+                                        <i-option value="2">102</i-option>
+                                        <i-option value="3">103</i-option>
+                                        <i-option value="4">104</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item>
+                                    <i-button type="primary"><Icon type="ios-search-strong" style="font-size:15px"></Icon>&nbsp查询</i-button>
+                                </Form-item>
+                            </i-form>
+                        </div>
+                    </i-col>
+                </row>
+                <row>
+                    <i-col span="24">
+                        <div style="width:100%;height:550px;background:#f6c85c;border: solid 1px #DDDDDD;border-radius: 5px;overflow:scroll;">
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                            <div style="float:left;width:260px;height:240px;background:#82f74c;border: solid 1px #DDDDDD;border-radius: 5px;"></div>
+                        </div>
+                    </i-col>
+                </row>
+                </br>
+                <row>
+                    <i-col span="24">
+                        <div style="border: solid 1px #DDDDDD;border-radius: 5px;">
+                            <i-table border :columns="columns1" :data="data1"></i-table>
+                        </div>
+                    </i-col>
+                </row>
             </i-col>
-        </Row>
+        </row>
 
     </div>
     <script>
-        app();
-        function app() {
-            var vue = new Vue({
-                el: '#app',
-                methods: {
-
+        var vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    model1: [],
+                    model2: [],
+                    model3: [],
+                    columns1: [
+                 {
+                     title: '用水类型',
+                     key: 'type1'
+                 },
+                {
+                    title: '用量',
+                    key: 'amount1'
+                },
+                {
+                    title: '用水类型',
+                    key: 'type2'
+                },
+                {
+                    title: '用量',
+                    key: 'amount2'
+                },
+                {
+                    title: '用水类型',
+                    key: 'type3'
+                },
+                {
+                    title: '用量',
+                    key: 'amount3'
                 }
-            })
-        }
+                    ],
+                    data1: [
+                        {
+                            type1: '用水总量',
+                            amount1: 18,
+                            type2: '热水总量',
+                            amount2: 18,
+                            type3: '冷水总量',
+                            amount3: 18
+                        },
+                         {
+                             type1: '总量平均',
+                             amount1: 18,
+                             type2: '热水平均',
+                             amount2: 18,
+                             type3: '冷水平均',
+                             amount3: 18
+                         }
+                    ]
+                }
+
+            },
+            methods: {
+
+            }
+        })
+
     </script>
 </body>
 </html>

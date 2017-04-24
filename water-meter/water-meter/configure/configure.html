@@ -1,50 +1,491 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<<head>
-    <meta charset="utf-8">
-    <title>纯css3闪烁动画</title>
-    <style>
-        /*  动画闪烁颜色  */
-  
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="uZoneTec" />
+    <title>HIT RCMS</title>
+    <style scoped=scoped scoped=scoped>
+        .layout {
+            border: 1px solid #3399ff;
+            background: #3399ff;
+            width: 100%;
+            height: 70px;
+            text-align: center;
+        }
 
-        @-webkit-keyframes magentaPulse {
-            from {
-                background-color: #630030;
-                -webkit-box-shadow: 0 0 9px #333;
+        .layout-ceiling-main {
+            float: right;
+            margin-right: 10px;
+            padding: 20px 0;
+        }
+
+        .font {
+            font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        }
+
+        .menu-font {
+            font-size: 30px;
+            color: #464c5b;
+            padding: 10px 28px;
+        }
+
+        .menu-height {
+            height: 100px;
+            line-height: 74px;
+            border: solid 1px #DDDDDD;
+            border-radius: 5px;
+        }
+
+            .menu-height:hover {
+                border: 2px solid #DDDDDD;
             }
 
-            50% {
-                background-color: #a9014b;
-                -webkit-box-shadow: 0 0 18px #a9014b;
+        .gundong {
+            line-height: 40px;
+        }
+
+        .top {
+            background: #DDDDDD;
+            border: solid 1px #DDDDDD;
+            border-radius: 5px;
+        }
+        /*闪烁*/
+        .wrong {
+            height: 100px;
+            line-height: 74px;
+            border: solid 1px #DDDDDD;
+            background: #fb1252;
+            border-radius: 5px;
+            -webkit-animation: twinkling 1s infinite ease-in-out;
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        @-webkit-keyframes twinkling {
+            0% {
+                opacity: 0.5;
             }
 
-            to {
-                background-color: #630030;
-                -webkit-box-shadow: 0 0 9px #333;
+            100% {
+                opacity: 1;
             }
         }
 
-        /*  重复动画  */
-        a.button {
-            -webkit-animation-iteration-count: infinite;
-        }
+        @keyframes twinkling {
+            0% {
+                opacity: 0.5;
+            }
 
-        /*  动画名称、动画完成时间  */
-     
-
-  
-        .magentaPulse.button {
-            -webkit-animation-name: magentaPulse;
-            -webkit-animation-duration: 3s;
+            100% {
+                opacity: 1;
+            }
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="/content/iview.css" />
+    <link rel="stylesheet" type="text/css" href="/content/ionicons.css" />
+    <script type="text/javascript" src="/scripts/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="/scripts/vue.min.js"></script>
+    <script type="text/javascript" src="/scripts/uzen.js"></script>
+    <script type="text/javascript" src="/scripts/iview.js"></script>
+    <script type="text/javascript" src="/scripts/echarts.min.js"></script>
 </head>
-<body style="background-color:#ccc;">
-    <div >
-        <div >
-            
-            <a class="barge magentaPulse button">click me</a>
-        </div>
+<body>
+    <div id="app">
+        <row>
+            <i-col span="24">
+                <div class="layout">
+                    <span style="font-size:40px;color:#464c5b">智能楼宇水表监测系统</span>
+                    <div class="layout-ceiling-main">
+                        <a href="#" style="font-size:14px;color:#464c5b">帮助中心</a> |
+                        <a href="#" style="font-size:14px;color:#464c5b">联系我们</a>
+                    </div>
+
+                </div>
+            </i-col>
+        </row>
+        <row gutter="2">
+            <i-col span="3">
+                <i-menu theme="light" active-name="1" width="auto">
+                    <Menu-item name="1" class="menu-height">
+                        <Icon type="ios-list-outline" style="font-size:30px"></Icon>
+                        <span class="menu-font">总&nbsp&nbsp&nbsp览</span>
+                    </Menu-item>
+                    <Menu-item name="2" class="wrong">
+                        <Icon type="ios-bell" style="font-size:30px"></Icon>
+                        <span class="menu-font">报&nbsp&nbsp&nbsp警</span>
+                    </Menu-item>
+                    <Menu-item name="3" class="menu-height">
+                        <Icon type="ios-search-strong" style="font-size:30px"></Icon>
+                        <span class="menu-font">明&nbsp&nbsp&nbsp细</span>
+                    </Menu-item>
+                    <Menu-item name="4" class="menu-height">
+                        <Icon type="clipboard" style="font-size:30px"></Icon>
+                        <span class="menu-font">报&nbsp&nbsp&nbsp表</span>
+                    </Menu-item>
+                    <Menu-item name="5" class="menu-height">
+                        <Icon type="pie-graph" style="font-size:30px"></Icon>
+                        <span class="menu-font">分&nbsp&nbsp&nbsp析</span>
+                    </Menu-item>
+                    <Menu-item name="6" class="menu-height">
+                        <Icon type="ios-gear" style="font-size:30px"></Icon>
+                        <span class="menu-font">配&nbsp&nbsp&nbsp置</span>
+                    </Menu-item>
+                </i-menu>
+            </i-col>
+            <i-col span="21">
+                <row>
+                    <i-col span="24">
+                        <div class="top">
+                            <MARQUEE id=a onmouseover=a.stop()
+                                     onmouseout=a.start() scrollAmount=6 direction=left
+                                     height=40>
+                                <div class="gundong"><span style="font-size:18px;color:#00cc66">系统运行一切正常。。。</span></div>
+                            </MARQUEE>
+                        </div>
+                    </i-col>
+                </row>
+                </br>
+                <row>
+                    <i-col span="24">
+                        <div>
+                            <i-form label-width="70" inline=inline>
+                                <Form-item label="起止时间">
+                                    <row>
+                                        <i-col span="11">
+                                            <Date-picker type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+                                        </i-col>
+                                        <i-col span="2" style="text-align: center">&nbsp&nbsp&nbsp-</i-col>
+                                        <i-col span="11">
+                                            <Time-picker type="timerange" placement="bottom-end" placeholder="选择时间" style="width: 200px"></Time-picker>
+                                        </i-col>
+                                    </row>
+                                </Form-item>
+                                <Form-item label="时间节点">
+                                    <i-select style="width:80px">
+                                        <i-option value="1">年份</i-option>
+                                        <i-option value="2">半年</i-option>
+                                        <i-option value="3">季度</i-option>
+                                        <i-option value="4">月份</i-option>
+                                        <i-option value="5">每天</i-option>
+                                        <i-option value="6">ALL</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item label="分组">
+                                    <i-select v-model="model1" style="width:200px" filterable=filterable multiple=multiple>
+                                        <i-option value="1">楼一</i-option>
+                                        <i-option value="2">楼二</i-option>
+                                        <i-option value="3">组一</i-option>
+                                        <i-option value="4">组二</i-option>
+                                        <i-option value="5">楼一</i-option>
+                                        <i-option value="6">楼二</i-option>
+                                        <i-option value="7">组一</i-option>
+                                        <i-option value="8">组二</i-option>
+                                        <i-option value="9">楼一</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item label="楼层">
+                                    <i-select v-model="model2" style="width:200px" filterable=filterable multiple=multiple>
+                                        <i-option value="1">一楼</i-option>
+                                        <i-option value="2">二楼</i-option>
+                                        <i-option value="3">三楼</i-option>
+                                        <i-option value="4">四楼</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item label="房间">
+                                    <i-select v-model="model3" style="width:200px" filterable=filterable multiple=multiple>
+                                        <i-option value="1">101</i-option>
+                                        <i-option value="2">102</i-option>
+                                        <i-option value="3">103</i-option>
+                                        <i-option value="4">104</i-option>
+                                    </i-select>
+                                </Form-item>
+                                <Form-item>
+                                    <i-button type="primary"><Icon type="ios-search-strong" style="font-size:15px"></Icon>&nbsp查询</i-button>
+                                </Form-item>
+                            </i-form>
+                        </div>
+                    </i-col>
+                </row>
+                <row>
+                    <i-col span="24">
+                        <div style="width:100%;height:325px;background:#f6c85c;border: solid 1px #DDDDDD;border-radius: 5px;overflow:scroll;">
+
+                        </div>
+                    </i-col>
+                </row>
+                <row>
+                    <i-col span="24">
+                        <Tabs type="card">
+                            <Tab-pane label="标签一"><div id="main" style="width: 600px;height:350px;background:green;border: solid 1px #DDDDDD;border-radius: 5px;"></div></Tab-pane>
+                            <Tab-pane label="标签二">标签二的内容</Tab-pane>
+                            <Tab-pane label="标签三">标签三的内容</Tab-pane>
+                        </Tabs>
+                    </i-col>
+                </row>
+            </i-col>
+        </row>
+
     </div>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    model1: [],
+                    model2: [],
+                    model3: [],
+                    hotwater: [
+                                709,
+                                1917,
+                                2455,
+                                2610,
+                                1719,
+                                1433,
+                                1544,
+                                3285,
+                                5208,
+                                3372,
+                                2484,
+                                4078
+                    ],
+                    coldwater: [
+                                    327,
+                                    1776,
+                                    507,
+                                    1200,
+                                    800,
+                                    482,
+                                    204,
+                                    1390,
+                                    1001,
+                                    951,
+                                    381,
+                                    220
+                    ],
+                    water: [
+                                    1036,
+                                    3693,
+                                    2962,
+                                    3810,
+                                    2519,
+                                    1915,
+                                    1748,
+                                    4675,
+                                    6209,
+                                    4323,
+                                    2865,
+                                    4298
+                    ]
+                }
+
+            },
+            methods: {
+                drawPie(id) {
+                    var xData = function () {
+                        var data = [];
+                        for (var i = 1; i < 13; i++) {
+                            data.push(i + "月份");
+                        }
+                        return data;
+                    }();
+                    this.charts = echarts.init(document.getElementById(id));
+                    this.charts.setOption({
+                        backgroundColor: "#344b58",
+                        "title": {
+                            "text": "今年楼层热冷水总用量统计",
+                            x: "4%",
+
+                            textStyle: {
+                                color: '#fff',
+                                fontSize: '22'
+                            },
+                            subtextStyle: {
+                                color: '#90979c',
+                                fontSize: '16',
+
+                            },
+                        },
+                        "tooltip": {
+                            "trigger": "axis",
+                            "axisPointer": {
+                                "type": "shadow",
+                                textStyle: {
+                                    color: "#fff"
+                                }
+
+                            },
+                        },
+                        "grid": {
+                            "borderWidth": 0,
+                            "top": 110,
+                            "bottom": 95,
+                            textStyle: {
+                                color: "#fff"
+                            }
+                        },
+                        "legend": {
+                            x: '4%',
+                            top: '9%',
+                            textStyle: {
+                                color: '#90979c',
+                            },
+                            "data": ['热水', '冷水', '平均']
+                        },
+
+
+                        "calculable": true,
+                        "xAxis": [{
+                            "type": "category",
+                            "axisLine": {
+                                lineStyle: {
+                                    color: '#90979c'
+                                }
+                            },
+                            "splitLine": {
+                                "show": false
+                            },
+                            "axisTick": {
+                                "show": false
+                            },
+                            "splitArea": {
+                                "show": false
+                            },
+                            "axisLabel": {
+                                "interval": 0,
+
+                            },
+                            "data": xData,
+                        }],
+                        "yAxis": [{
+                            "type": "value",
+                            "splitLine": {
+                                "show": false
+                            },
+                            "axisLine": {
+                                lineStyle: {
+                                    color: '#90979c'
+                                }
+                            },
+                            "axisTick": {
+                                "show": false
+                            },
+                            "axisLabel": {
+                                "interval": 0,
+
+                            },
+                            "splitArea": {
+                                "show": false
+                            },
+
+                        }],
+                        "dataZoom": [{
+                            "show": true,
+                            "height": 30,
+                            "xAxisIndex": [
+                                0
+                            ],
+                            bottom: 30,
+                            "start": 10,
+                            "end": 80,
+                            handleIcon: 'path://M306.1,413c0,2.2-1.8,4-4,4h-59.8c-2.2,0-4-1.8-4-4V200.8c0-2.2,1.8-4,4-4h59.8c2.2,0,4,1.8,4,4V413z',
+                            handleSize: '110%',
+                            handleStyle: {
+                                color: "#d3dee5",
+
+                            },
+                            textStyle: {
+                                color: "#fff"
+                            },
+                            borderColor: "#90979c"
+
+
+                        }, {
+                            "type": "inside",
+                            "show": true,
+                            "height": 15,
+                            "start": 1,
+                            "end": 35
+                        }],
+                        "series": [{
+                            "name": "热水",
+                            "type": "bar",
+                            "stack": "总量",
+                            "barMaxWidth": 35,
+                            "barGap": "10%",
+                            "itemStyle": {
+                                "normal": {
+                                    "color": "rgba(255,144,128,1)",
+                                    "label": {
+                                        "show": true,
+                                        "textStyle": {
+                                            "color": "#fff"
+                                        },
+                                        "position": "inside",
+                                        formatter: function (p) {
+                                            return p.value > 0 ? (p.value) : '';
+                                        }
+                                    }
+                                }
+                            },
+                            "data": this.hotwater
+                        },
+
+                            {
+                                "name": "冷水",
+                                "type": "bar",
+                                "stack": "总量",
+                                "itemStyle": {
+                                    "normal": {
+                                        "color": "rgba(0,191,183,1)",
+                                        "barBorderRadius": 0,
+                                        "label": {
+                                            "show": true,
+                                            "position": "top",
+                                            formatter: function (p) {
+                                                return p.value > 0 ? (p.value) : '';
+                                            }
+                                        }
+                                    }
+                                },
+                                "data": this.coldwater
+                            }, {
+                                "name": "总量",
+                                "type": "line",
+                                "stack": "总量",
+                                symbolSize: 10,
+                                symbol: 'circle',
+                                "itemStyle": {
+                                    "normal": {
+                                        "color": "rgba(252,230,48,1)",
+                                        "barBorderRadius": 0,
+                                        "label": {
+                                            "show": true,
+                                            "position": "top",
+                                            formatter: function (p) {
+                                                return p.value > 0 ? (p.value) : '';
+                                            }
+                                        }
+                                    }
+                                },
+                                "data": this.water
+                            },
+                        ]
+                    })
+                }
+            },
+            mounted() {
+                this.$nextTick(function () {
+                    this.drawPie('main');
+                })
+            }
+        })
+
+    </script>
 </body>
 </html>
